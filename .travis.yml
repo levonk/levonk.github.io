@@ -1,0 +1,21 @@
+langauge: ruby
+
+rmv:
+- 2.2.2
+
+branches:
+  only:
+  - master
+
+script:
+- bundle exec jekyll build
+
+deploy:
+  provider: s3
+  bucket: blog-levonk-com
+  skip_cleanup: true
+  region: us-east-1
+  local_dir: _site
+  on:
+    branch: master
+  dot_match: true
